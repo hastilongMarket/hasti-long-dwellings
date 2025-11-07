@@ -1,43 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart } from "lucide-react";
-import homeDecorImg from "@/assets/home-decor-hero.jpg";
-import artsCraftsImg from "@/assets/arts-crafts.jpg";
-import toysImg from "@/assets/toys.jpg";
-import furnitureImg from "@/assets/furniture.jpg";
-
-const products = [
-  {
-    id: 1,
-    name: "Artisan Ceramic Vase",
-    price: "$89.99",
-    image: homeDecorImg,
-    category: "Home Decor",
-  },
-  {
-    id: 2,
-    name: "Handmade Watercolor Set",
-    price: "$45.99",
-    image: artsCraftsImg,
-    category: "Arts & Crafts",
-  },
-  {
-    id: 3,
-    name: "Wooden Teddy Bear",
-    price: "$34.99",
-    image: toysImg,
-    category: "Toys",
-  },
-  {
-    id: 4,
-    name: "Modern Oak Chair",
-    price: "$299.99",
-    image: furnitureImg,
-    category: "Furniture",
-  },
-];
+import { getFeaturedProducts } from "@/data/products";
 
 const FeaturedProducts = () => {
+  const products = getFeaturedProducts();
   return (
     <section className="py-20 bg-gradient-to-br from-background via-teal-light/10 to-secondary/20">
       <div className="container mx-auto px-4">
