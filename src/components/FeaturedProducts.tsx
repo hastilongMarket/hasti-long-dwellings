@@ -39,7 +39,7 @@ const products = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gradient-to-br from-background via-teal-light/10 to-secondary/20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">

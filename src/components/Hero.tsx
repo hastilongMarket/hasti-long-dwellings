@@ -4,7 +4,7 @@ import heroImage from "@/assets/home-decor-hero.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20">
+    <section className="relative min-h-[90vh] flex items-center pt-20 bg-gradient-to-br from-background via-secondary/30 to-teal-light/20">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
