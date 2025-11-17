@@ -14,5 +14,6 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/hasti-long-dwellings/", // correct base for GitHub Pages subpath
+  base: "/hasti-long-dwellings/", // correct base for GitHub Pages subpath,
+    plugins: [react()],
 }));
