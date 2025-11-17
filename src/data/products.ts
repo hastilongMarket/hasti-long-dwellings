@@ -8,7 +8,7 @@ export interface Product {
   name: string;
   price: string;
   image: string;
-  category: "Home Decor" | "Arts & Crafts" | "Toys" | "Furniture";
+  category: "Home Decor" | "Arts & Crafts" | "Toys" | "Furniture" | "Puja";
   featured?: boolean;
 }
 
