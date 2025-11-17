@@ -74,7 +74,7 @@ const Navigation = () => {
               <Instagram className="h-5 w-5" />
             </a>
             <a 
-              href="https://wa.me/1234567890" 
+              href="https://wa.me/917829279765?text=Hi%20I%20want%20to%20know%20more%20about%20HastiLong%20Marketplace!"
               target="_blank" 
               rel="noopener noreferrer"
               className="hidden md:flex text-foreground hover:text-accent transition-colors"
