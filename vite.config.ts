@@ -19,5 +19,5 @@ export default defineConfig(({ mode }) => ({
   },
 
   // ✨ Required for GitHub Pages deployment under subfolder
-  base: "/hasti-long-dwellings/",
+   base: "/",
 }));
