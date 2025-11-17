@@ -1,16 +1,19 @@
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, User, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import logo from "@/assets/hastilong-logo.png";
+import { AuthDialog } from "./AuthDialog";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
 
   const navLinks = [
     { name: "Home Decor", href: "#home-decor" },
     { name: "Arts & Crafts", href: "#arts-crafts" },
     { name: "Toys", href: "#toys" },
     { name: "Furniture", href: "#furniture" },
+    { name: "Puja", href: "#puja" },
   ];
 
   return (
@@ -34,12 +37,47 @@ const Navigation = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Social Media Icons */}
+            <a 
+              href="https://facebook.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hidden md:flex text-foreground hover:text-accent transition-colors"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hidden md:flex text-foreground hover:text-accent transition-colors"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://wa.me/1234567890" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hidden md:flex text-foreground hover:text-accent transition-colors"
+            >
+              <MessageCircle className="h-5 w-5" />
+            </a>
+
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
               <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
                 0
               </span>
+            </Button>
+
+            {/* Account Button */}
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => setShowAuthDialog(true)}
+            >
+              <User className="h-5 w-5" />
             </Button>
 
             {/* Mobile Menu Button */}
@@ -70,6 +108,8 @@ const Navigation = () => {
           </div>
         )}
       </div>
+
+      <AuthDialog open={showAuthDialog} onOpenChange={setShowAuthDialog} />
     </nav>
   );
 };
