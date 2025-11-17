@@ -15,4 +15,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: '/hasti-long-dwellings/',  // Add this line to set the correct base URL
 }));
