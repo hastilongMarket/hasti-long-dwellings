@@ -58,7 +58,7 @@ const Navigation = () => {
           <div className="flex items-center gap-3">
             {/* Social Media Icons */}
             <a 
-              href="https://facebook.com" 
+              href="https://www.facebook.com/share/1F14XLCPWw/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hidden md:flex text-foreground hover:text-accent transition-colors"
@@ -66,7 +66,7 @@ const Navigation = () => {
               <Facebook className="h-5 w-5" />
             </a>
             <a 
-              href="https://instagram.com" 
+              href="https://www.instagram.com/hastilong_marketplace?igsh=NGdzbGkxa3FpNmpj" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hidden md:flex text-foreground hover:text-accent transition-colors"
