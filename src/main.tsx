@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <HashRouter>
+  <HashRouter basename="/hasti-long-dwellings">
     <App />
   </HashRouter>
 );
