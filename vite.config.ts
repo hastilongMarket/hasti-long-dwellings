@@ -8,12 +8,16 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+
+  // ✨ FIX: single plugins entry + preserved componentTagger
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/hasti-long-dwellings/", // correct base for GitHub Pages subpath,
-    plugins: [react()],
+
+  // ✨ Required for GitHub Pages deployment under subfolder
+  base: "/hasti-long-dwellings/",
 }));
