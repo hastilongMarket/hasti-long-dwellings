@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { signInWithGoogle } from "@/firebase";
 import { Button as UIButton } from "@/components/ui/button";
 import { toast } from "sonner";
+
 import {
   Mail,
   Smartphone,
@@ -10,6 +11,7 @@ import {
   ArrowLeft,
   Loader2,
   Check,
+  Chrome
 } from "lucide-react";
 
 /* ---------- Custom CSS ---------- */
@@ -113,7 +115,7 @@ const ChoiceScreen = ({
         disabled={disabled}
         aria-label="Continue with Google"
       >
-        <Mail className="mr-3 h-5 w-5 text-red-500" />
+        <Chrome className="mr-3 h-5 w-5 text-red-500" />
         Continue with Google
       </Button>
 
