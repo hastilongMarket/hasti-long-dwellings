@@ -1,5 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { signInWithGoogle } from "@/firebase";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   Mail,
   Smartphone,
@@ -136,6 +139,31 @@ const ChoiceScreen = ({
     </div>
   </motion.div>
 );
+<Button
+  className="w-full bg-white text-black border hover:bg-gray-200"
+  onClick={async () => {
+    try {
+      const user = await signInWithGoogle();
+      toast(`Welcome ${user.displayName}`);
+      console.log("Google User:", user);
+
+      // TEMP LOGIC UNTIL BACKEND IS READY:
+      localStorage.setItem("user", JSON.stringify({
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        photo: user.photoURL
+      }));
+
+      // Redirect example
+      window.location.href = "/";
+    } catch (e) {
+      toast.error("Google login failed");
+    }
+  }}
+>
+  Continue with Google
+</Button>
 
 const MobileInputScreen = ({
   mobile,
