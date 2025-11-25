@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { signInWithGoogle } from "@/firebase";
-import { Button } from "@/components/ui/button";
+import { Button as UIButton } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
   Mail,
@@ -12,18 +12,7 @@ import {
   Check,
 } from "lucide-react";
 
-/**
- * Login.tsx
- * - Drop into: src/pages/Login.tsx
- * - Uses TailwindCSS, framer-motion, lucide-react
- * - Exported component: default Login
- *
- * Notes:
- * - No backend calls here — placeholders only.
- * - Keeps API hooks minimal so you can wire them later.
- */
-
-/* ---------- Small custom CSS (kept inline for single-file drop) ---------- */
+/* ---------- Custom CSS ---------- */
 const customStyles = `
 @keyframes blob {
   0% { transform: translate(0px,0px) scale(1); }
@@ -35,7 +24,8 @@ const customStyles = `
 .shadow-3xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15), 0 0 30px -5px rgba(0,0,0,0.08); }
 `;
 
-/* ---------- Small reusable components ---------- */
+/* ---------- Reusable Components ---------- */
+
 const Button = ({
   children,
   variant = "primary",
@@ -81,14 +71,14 @@ const Input = ({
   </div>
 );
 
-/* ---------- Motion variants ---------- */
+/* ---------- Animations ---------- */
 const screenVariants = {
   enter: { opacity: 0, x: 40 },
   center: { opacity: 1, x: 0 },
   exit: { opacity: 0, x: -40 },
 };
 
-/* ---------- Screens (pure UI) ---------- */
+/* ---------- Screens ---------- */
 
 const ChoiceScreen = ({
   onChooseGoogle,
@@ -114,6 +104,7 @@ const ChoiceScreen = ({
     </div>
 
     <div className="space-y-4 pt-4">
+      {/* Fixed: Google Sign-in Working Here */}
       <Button
         variant="outline"
         size="lg"
@@ -139,31 +130,8 @@ const ChoiceScreen = ({
     </div>
   </motion.div>
 );
-<Button
-  className="w-full bg-white text-black border hover:bg-gray-200"
-  onClick={async () => {
-    try {
-      const user = await signInWithGoogle();
-      toast(`Welcome ${user.displayName}`);
-      console.log("Google User:", user);
 
-      // TEMP LOGIC UNTIL BACKEND IS READY:
-      localStorage.setItem("user", JSON.stringify({
-        name: user.displayName,
-        email: user.email,
-        uid: user.uid,
-        photo: user.photoURL
-      }));
-
-      // Redirect example
-      window.location.href = "/";
-    } catch (e) {
-      toast.error("Google login failed");
-    }
-  }}
->
-  Continue with Google
-</Button>
+/* ------------ Mobile Input Screen ------------ */
 
 const MobileInputScreen = ({
   mobile,
@@ -228,6 +196,8 @@ const MobileInputScreen = ({
   );
 };
 
+/* ------------ OTP Screen ------------ */
+
 const OtpScreen = ({
   mobile,
   otp,
@@ -290,7 +260,7 @@ const OtpScreen = ({
   );
 };
 
-/* ---------- Main exported page component ---------- */
+/* ---------- Main Login Component ---------- */
 
 export default function Login() {
   const [screen, setScreen] = useState<"choice" | "mobile" | "otp">("choice");
@@ -298,11 +268,33 @@ export default function Login() {
   const [otp, setOtp] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  /* Placeholder: simulate server request to generate OTP */
+  /* --- Google Login Actual Function --- */
+  const handleGoogleLogin = async () => {
+    try {
+      const user = await signInWithGoogle();
+
+      toast(`Welcome ${user.displayName}`);
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid,
+          photo: user.photoURL,
+        })
+      );
+
+      window.location.href = "/";
+    } catch (e) {
+      toast.error("Google login failed");
+    }
+  };
+
+  /* Placeholder: simulate server OTP generation */
   const requestOtp = useCallback(async () => {
     if (mobile.length !== 10) return;
     setSubmitting(true);
-    // simulate network
     await new Promise((r) => setTimeout(r, 900));
     const generated = Math.floor(100000 + Math.random() * 900000).toString();
     setOtp(generated);
@@ -335,7 +327,11 @@ export default function Login() {
         <div className="relative min-h-[360px]">
           <AnimatePresence mode="wait">
             {screen === "choice" && (
-              <ChoiceScreen onChooseGoogle={() => alert("Google sign-in placeholder")} onChooseMobile={() => setScreen("mobile")} disabled={submitting} />
+              <ChoiceScreen
+                onChooseGoogle={handleGoogleLogin}
+                onChooseMobile={() => setScreen("mobile")}
+                disabled={submitting}
+              />
             )}
 
             {screen === "mobile" && (
@@ -367,4 +363,3 @@ export default function Login() {
     </div>
   );
 }
-
