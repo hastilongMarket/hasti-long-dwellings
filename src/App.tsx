@@ -21,6 +21,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/hastilong/admin/login" element={<AdminLogin />} />
           <Route path="/hastilong/admin" element={<AdminPanel />} />
           <Route path="*" element={<NotFound />} />
