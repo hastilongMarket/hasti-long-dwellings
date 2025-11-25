@@ -9,13 +9,15 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // --------------
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBTsD5NrwgjBRjTm7VltadWzDnpHwV5hkk",
+  authDomain: "hastilong-b3837.firebaseapp.com",
+  projectId: "hastilong-b3837",
+  storageBucket: "hastilong-b3837.firebasestorage.app",
+  messagingSenderId: "34336938872",
+  appId: "1:34336938872:web:19fddbad7bc357227d868d",
+  measurementId: "G-Q5368J1970"
 };
+
 
 const app = initializeApp(firebaseConfig);
 
